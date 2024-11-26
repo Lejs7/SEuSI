@@ -1,0 +1,29 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; 
+}
+
+main {
+  flex: 1; 
+}
+
+/* Footer Styling */
+footer {
+  background-color: #343a40; 
+  color: #fff; 
+  padding: 1rem 0; 
+  border-top: 1px solid #495057; 
+  text-align: center;
+}
+
+footer p {
+  margin: 0; 
+}
+
+footer small {
+  display: block;
+  margin-top: 0.5rem; 
+}
