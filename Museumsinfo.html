@@ -10,6 +10,27 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+
+    <style>
+    /* CSS für die Kamera */
+    #camera-container {
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        margin: 20px auto;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    a-scene {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+</style>
+
 </head>
 <body>
     <!-- Header mit Bootstrap -->
@@ -76,6 +97,27 @@
     <a-cylinder color="yellow" gps-new-entity-place="latitude: 50.9121256; longitude:  6.9900674" depth="10" height="10" width="10" position="0 15 0"></a-cylinder>
 
 </a-scene>
+
+    <div id="camera-container">
+    <a-scene vr-mode-ui='enabled: false' 
+             arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' 
+             renderer='antialias: true; alpha: true'>
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-cylinder color="green" 
+                    gps-new-entity-place="latitude: 50.912020; longitude: 6.989852" 
+                    depth="10" height="10" width="10" position="0 15 0">
+        </a-cylinder> 
+        <a-sphere color="yellow" 
+                  gps-new-entity-place="latitude: 50.912004; longitude: 6.989852" 
+                  depth="10" height="10" width="10" position="0 5 0">
+        </a-sphere>
+        <a-cylinder color="yellow" 
+                    gps-new-entity-place="latitude: 50.9121256; longitude: 6.9900674" 
+                    depth="10" height="10" width="10" position="0 15 0">
+        </a-cylinder>
+    </a-scene>
+</div>
+
 </body>
 <!-- Footer mit Bootstrap -->
 <footer class="bg-light py-4 mt-auto">
