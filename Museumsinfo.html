@@ -42,6 +42,50 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
+    <!DOCTYPE html>
+<html>
+<head>
+<title>AR.js A-Frame Location-based</title>
+<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+</head>
+<body>
+<script>
+    window.onload = () => {
+    let testEntityAdded = false;
+
+    const el = document.querySelector("[gps-new-camera]");
+
+    el.addEventListener("gps-camera-update-position", e => {
+        if(!testEntityAdded) {
+            alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
+            // Add a box to the north of the initial GPS position
+            const entity = document.createElement("a-box");
+            entity.setAttribute("scale", {
+                x: 20, 
+                y: 20,
+                z: 20
+            });
+            entity.setAttribute('material', { color: 'red' } );
+            entity.setAttribute('gps-new-entity-place', {
+                latitude: e.detail.position.latitude + 0.001,
+                longitude: e.detail.position.longitude
+            });
+            document.querySelector("a-scene").appendChild(entity);
+    });
+};
+</script>
+
+<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+    <a-cylinder color="green" gps-new-entity-place="latitude: 50.912020; longitude:  6.989852" depth="10" height="10" width="10" position="0 15 0"></a-cylinder> 
+    <a-sphere color="yellow" gps-new-entity-place="latitude: 50.912004; longitude:  6.989852" depth="10" height="10" width="10" position="0 5 0"></a-cylinder>
+    <a-cylinder color="yellow" gps-new-entity-place="latitude: 50.9121256; longitude:  6.9900674" depth="10" height="10" width="10" position="0 15 0"></a-cylinder>
+
+</a-scene>
+</body>
+</html>
 </body>
 <!-- Footer mit Bootstrap -->
 <footer class="bg-light py-4 mt-auto">
