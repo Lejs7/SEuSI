@@ -100,7 +100,19 @@
         <a-box color="grey" gps-new-entity-place="latitude: 50.911976; longitude:  6.989397" depth="5" height="2" width="50" position="0 -5 0"></a-box>
         <a-box color="grey" gps-new-entity-place="latitude: 50.911937; longitude:  6.989080" depth="5" height="2" width="50" position="0 -5 0"></a-box>
         <a-image src="https://maxernstmuseum.lvr.de/media/mem/mem_architektur/DSC01706_bearbeitet_einfach.jpg" gps-new-entity-place="latitude: 50.911864; longitude:  6.988800" width="50" height="50"></a-image>
-    </a-scene>
+
+        <a-scene embedded arjs>
+        <a-assets>
+        <img id="test_img" src="https://maxernstmuseum.lvr.de/media/mem/mem_architektur/DSC01706_bearbeitet_einfach.jpg">
+        </a-assets>
+        <a-marker preset="hiro" url="hiro.patt">
+        <a-image 
+            rotation="90 0 0"
+            src="#text_img"></a-image>
+        </a-marker>
+        <a-entity camera></a-entity>
+        </a-scene>
+        </a-scene>
 </div>
 
 </body>
